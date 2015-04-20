@@ -16,18 +16,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var aliens:NSMutableArray = NSMutableArray()
     var aliensDestroyed:Int = 0
+    var gameover = false
+    
+    //let alienCategory:UInt32 = 0x1 << 1
+    //let photonTorpedoCategory:UInt32 = 0x1 << 0
     
     
-    let alienCategory:UInt32 = 0x1 << 1
-    let photonTorpedoCategory:UInt32 = 0x1 << 0
+    enum ColliderType : UInt32 {
+        case car = 1
+        case enemy = 2
+    }
     
+    func didBeginContact(contact: SKPhysicsContact) {
+        gameover = true
+        println("collided")
+        var gameOverScene:SKScene = GameOverScene(size: self.size, won: false)
+
+        
+    }
+    
+
     
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.physicsWorld.contactDelegate = self
         player = SKSpriteNode(imageNamed: "car.png")
-        
         player.position = CGPointMake(self.frame.size.width/2, player.size.height/2 + 20)
+        player.physicsBody = SKPhysicsBody(rectangleOfSize: player.size)
+        player.physicsBody!.affectedByGravity = false
+        player.physicsBody!.categoryBitMask = ColliderType.car.rawValue
+        player.physicsBody!.contactTestBitMask = ColliderType.enemy.rawValue
+        player.physicsBody!.categoryBitMask = ColliderType.enemy.rawValue
         
         self.addChild(player)
         
@@ -36,7 +56,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
     }
-
     
     func addEnemy(){
         
@@ -45,10 +64,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.frame
         enemy.physicsBody = SKPhysicsBody(rectangleOfSize: enemy.size)
         enemy.physicsBody?.dynamic = true
-        enemy.physicsBody?.categoryBitMask = alienCategory
-        enemy.physicsBody?.contactTestBitMask = photonTorpedoCategory
+        enemy.physicsBody!.categoryBitMask = ColliderType.enemy.rawValue
+        enemy.physicsBody?.contactTestBitMask = ColliderType.car.rawValue
         enemy.physicsBody?.collisionBitMask = 0
-        
+
         // Where to create enemies along the x-axis
         let minX = enemy.size.width/2
         let maxX = self.frame.size.width - enemy.size.width/2
@@ -71,21 +90,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Create actions to animate
         
-        var actionArray:NSMutableArray = NSMutableArray()
+          var actionArray:NSMutableArray = NSMutableArray()
         
         actionArray.addObject(SKAction.moveTo(CGPointMake(position, -enemy.size.height), duration: NSTimeInterval(duration)))
-        actionArray.addObject((SKAction.runBlock({
+            actionArray.addObject((SKAction.runBlock({
             var transition:SKTransition = SKTransition.flipHorizontalWithDuration(0.5)
-            //var gameOverScene:SKScene = GameOverScene(size: self.size, won: false)
-            //self.view.presentScene(gameOverScene, transition: transition)
+//            var gameOverScene:SKScene = GameOverScene(size: self.size, won: false)
+//           self.view?.presentScene(gameOverScene, transition: transition)
         })))
-        
-        actionArray.addObject(SKAction.removeFromParent())
-        
+//        
+      actionArray.addObject(SKAction.removeFromParent())
         enemy.runAction(SKAction.sequence(actionArray))
         
-        
-    }
+        }
+
+    
     
     func updateWithTimeSinceLastUpdate(timeSinceLastUpdate:CFTimeInterval){
         lastYieldTimeInterval += timeSinceLastUpdate
@@ -93,6 +112,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastYieldTimeInterval = 0
             self.addEnemy()
         }
+        
+        
+            
         
         
     }
@@ -121,21 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        /*for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)*/
-        }
+              }
     }
    
 

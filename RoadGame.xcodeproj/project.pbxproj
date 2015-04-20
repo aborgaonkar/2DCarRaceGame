@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049EE6121ADE31C000A59FC6 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EE6111ADE31C000A59FC6 /* GameOverScene.swift */; };
+		04A13EE91ADE3B2A00B5FF9D /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04A13EE71ADE3B2A00B5FF9D /* MyParticle.sks */; };
+		04A13EEA1ADE3B2A00B5FF9D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A13EE81ADE3B2A00B5FF9D /* spark.png */; };
 		D56A419A1AD63E0B009CF423 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A41991AD63E0B009CF423 /* AppDelegate.swift */; };
 		D56A419C1AD63E0B009CF423 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D56A419B1AD63E0B009CF423 /* GameScene.sks */; };
 		D56A419E1AD63E0B009CF423 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A419D1AD63E0B009CF423 /* GameScene.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		049EE6111ADE31C000A59FC6 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOverScene.swift; path = "../../SpaceGameFiles-3/GameOverScene.swift"; sourceTree = "<group>"; };
+		04A13EE71ADE3B2A00B5FF9D /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		04A13EE81ADE3B2A00B5FF9D /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		D56A41941AD63E0B009CF423 /* RoadGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoadGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56A41981AD63E0B009CF423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D56A41991AD63E0B009CF423 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,9 +95,12 @@
 		D56A41961AD63E0B009CF423 /* RoadGame */ = {
 			isa = PBXGroup;
 			children = (
+				049EE6111ADE31C000A59FC6 /* GameOverScene.swift */,
 				D56A41991AD63E0B009CF423 /* AppDelegate.swift */,
 				D56A419B1AD63E0B009CF423 /* GameScene.sks */,
 				D56A419D1AD63E0B009CF423 /* GameScene.swift */,
+				04A13EE71ADE3B2A00B5FF9D /* MyParticle.sks */,
+				04A13EE81ADE3B2A00B5FF9D /* spark.png */,
 				D56A41C11AD63F90009CF423 /* ememy.png */,
 				D56A41BF1AD63F7E009CF423 /* car.png */,
 				D56A419F1AD63E0C009CF423 /* GameViewController.swift */,
@@ -214,6 +223,8 @@
 				D56A41BE1AD63E6E009CF423 /* road.png in Resources */,
 				D56A41A51AD63E0C009CF423 /* Images.xcassets in Resources */,
 				D56A41C41AD6419E009CF423 /* bgmusic.mp3 in Resources */,
+				04A13EE91ADE3B2A00B5FF9D /* MyParticle.sks in Resources */,
+				04A13EEA1ADE3B2A00B5FF9D /* spark.png in Resources */,
 				D56A419C1AD63E0B009CF423 /* GameScene.sks in Resources */,
 				D56A41C21AD63F90009CF423 /* ememy.png in Resources */,
 				D56A41A31AD63E0C009CF423 /* Main.storyboard in Resources */,
@@ -237,6 +248,7 @@
 			files = (
 				D56A419E1AD63E0B009CF423 /* GameScene.swift in Sources */,
 				D56A41A01AD63E0C009CF423 /* GameViewController.swift in Sources */,
+				049EE6121ADE31C000A59FC6 /* GameOverScene.swift in Sources */,
 				D56A419A1AD63E0B009CF423 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +443,7 @@
 				D56A41B91AD63E0C009CF423 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D56A41BA1AD63E0C009CF423 /* Build configuration list for PBXNativeTarget "RoadGameTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +452,7 @@
 				D56A41BC1AD63E0C009CF423 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
